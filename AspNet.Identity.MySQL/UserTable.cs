@@ -178,7 +178,7 @@ namespace AspNet.Identity.MySQL
         public int Insert(TUser user)
         {
             string commandText = @"Insert into Users (UserName, Id, PasswordHash, SecurityStamp,Email,EmailConfirmed,PhoneNumber,PhoneNumberConfirmed, AccessFailedCount,LockoutEnabled,LockoutEndDateUtc,TwoFactorEnabled,Name,Surname)
-                values (@name, @id, @pwdHash, @SecStamp,@email,@emailconfirmed,@phonenumber,@phonenumberconfirmed,@accesscount,@lockoutenabled,@lockoutenddate,@twofactorenabled,@Name,@Surname)";
+                values (@name, @id, @pwdHash, @SecStamp,@email,@emailconfirmed,@phonenumber,@phonenumberconfirmed,@accesscount,@lockoutenabled,@lockoutenddate,@twofactorenabled,@RealName,@Surname)";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@name", user.UserName);
             parameters.Add("@id", user.Id);
@@ -192,7 +192,7 @@ namespace AspNet.Identity.MySQL
             parameters.Add("@lockoutenabled", user.LockoutEnabled);
             parameters.Add("@lockoutenddate", user.LockoutEndDateUtc);
             parameters.Add("@twofactorenabled", user.TwoFactorEnabled);
-            parameters.Add("@Name", user.Name);
+            parameters.Add("@RealName", user.Name);
             parameters.Add("@Surname", user.Surname);
             return _database.Execute(commandText, parameters);
         }
@@ -230,7 +230,7 @@ namespace AspNet.Identity.MySQL
         {
             string commandText = @"Update Users set UserName = @userName, PasswordHash = @pswHash, SecurityStamp = @secStamp, 
                 Email=@email, EmailConfirmed=@emailconfirmed, PhoneNumber=@phonenumber, PhoneNumberConfirmed=@phonenumberconfirmed,
-                AccessFailedCount=@accesscount, LockoutEnabled=@lockoutenabled, LockoutEndDateUtc=@lockoutenddate, TwoFactorEnabled=@twofactorenabled, Name=@Name, Surname=@Surname  
+                AccessFailedCount=@accesscount, LockoutEnabled=@lockoutenabled, LockoutEndDateUtc=@lockoutenddate, TwoFactorEnabled=@twofactorenabled, Name=@RealName, Surname=@Surname  
                 WHERE Id = @userId";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@userName", user.UserName);
@@ -245,7 +245,7 @@ namespace AspNet.Identity.MySQL
             parameters.Add("@lockoutenabled", user.LockoutEnabled);
             parameters.Add("@lockoutenddate", user.LockoutEndDateUtc);
             parameters.Add("@twofactorenabled", user.TwoFactorEnabled);
-            parameters.Add("@Name", user.Name);
+            parameters.Add("@RealName", user.Name);
             parameters.Add("@Surname", user.Surname);
             return _database.Execute(commandText, parameters);
         }

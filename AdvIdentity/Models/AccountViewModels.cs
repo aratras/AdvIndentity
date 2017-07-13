@@ -89,7 +89,7 @@ namespace AdvIdentity.Models
         public string Surname { get; set; }
 
         [Required]
-        [RegularExpression(,ErrorMessage ="Phone is not valid")]
+        [RegularExpression(@"^[+]\d{2,3}\d{9}",ErrorMessage ="Phone is not valid")]
         public string Phone { get; set; }
     }
 

@@ -122,7 +122,6 @@ namespace AspNet.Identity.MySQL
 
             return Task.FromResult<TUser>(null);
         }
-
         /// <summary>
         /// Updates the UsersTable with the TUser instance values
         /// </summary>
