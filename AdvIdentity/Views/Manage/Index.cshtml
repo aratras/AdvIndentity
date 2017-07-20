@@ -12,21 +12,24 @@
     <dl class="dl-horizontal">
         <dt>Password:</dt>
         <dd>
-            [
+            
             @if (Model.HasPassword)
             {
-                @Html.ActionLink("Change your password", "ChangePassword")
+                <a type="button" class="btn btn-default" href="~/Manage/ChangePassword">Change your password</a>
             }
             else
             {
-                @Html.ActionLink("Create", "SetPassword")
+                <a type="button" class="btn btn-default" href="~/Manage/SetPassword">Create</a>
             }
-            ]
+            
         </dd>
-        <dt>Manage Ads:</dt>
+        <dd><br /></dd>
+        <dt>Advertisements:</dt>
         <dd>
-            @Html.ActionLink("Manage Advertisements", "YourAds", "Advertisements")
-            @Html.ActionLink("Create New Advertisement", "Create", "Advertisements")
+            <div class="btn-group">
+                <a type="button" class="btn btn-default" href="~/Advertisements/Create">Create new</a>
+                <a type="button" class="btn btn-default" href="~/Advertisememnts/YourAds">Back to account</a>
+            </div>
         </dd> 
     </dl>
 </div>

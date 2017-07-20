@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AdvIdentity.Models.AdvertisementsViewModel>
+﻿@model IEnumerable<AdvIdentity.Models.AdvertisementsCreateModel>
 
 @{
     ViewBag.Title = "YourAds";
@@ -8,7 +8,10 @@
 <h2>Your Advertisements</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <div class="btn-group">
+        <a type="button" class="btn btn-default" href="~/Advertisements/Create">Create new</a>
+        <a type="button" class="btn btn-default" href="~/Manage/Index">Back to account</a>
+    </div>
 </p>
 <table class="table">
     <tr>
@@ -36,8 +39,10 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.AdvId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.AdvId })
+            <div class="btn-group">
+                <a type="button" class="btn btn-default"href="~/Advertisements/Update?ID=@item.AdvId">Edit</a> 
+                <a type="button" class="btn btn-default" href="~/Advertisements/Delete?ID=@item.AdvId">Delete</a> 
+            </div>
         </td>
     </tr>
 }

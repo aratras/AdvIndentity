@@ -14,35 +14,116 @@ namespace AdvIdentity.Controllers
         // GET: Advertisements
         public ActionResult List()
         {
-            return View(DB.GetAllAdv());
+            try
+            {
+                return View(DB.GetAllAdv());
+            }
+            catch (Exception)
+            {
+                return View("ErrorNoEntries");
+            }
         }
         public ActionResult ByCreator(string ID)
         {
-            return View(DB.GetCreatorsAds(ID));
+            try
+            {
+                ViewBag.Name = DB.GetUserById(ID).Name;
+                ViewBag.Surname = DB.GetUserById(ID).Surname;
+                return View(DB.GetCreatorsAds(ID));
+            }
+            catch (Exception)
+            {
+                return View("ErrorNoEntries");
+            }
+
         }
         public ActionResult YourAds()
         {
             string id = User.Identity.GetUserId();
-            return View(DB.GetCreatorsAds(id));
+            try
+            {
+                return View(DB.GetCreatorsAds(id));
+            }
+            catch
+            {
+                return View("ErrorNoCreated");
+            }
         }
         public ActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Create(AdvertisementsCreateModel obj)
+        public ActionResult Create(AdvertisementsCreateModel adv)
         {
             if (ModelState.IsValid)
             {
-                obj.CreatorId = User.Identity.GetUserId();
-                DB.CreateAdv(obj);
-                List<AdvertisementsViewModel> list = DB.GetCreatorsAds(obj.CreatorId).ToList();
+                adv.CreatorId = User.Identity.GetUserId();
+                DB.CreateAdv(adv);
+
+                List<AdvertisementsCreateModel> list = DB.GetCreatorsAds(adv.CreatorId).ToList();
                 return View("YourAds", list);
             }
             else
             {
-                return View("Create",obj);
+                return View("Create", adv);
             }
         }
+        public ActionResult Update(int id)
+        {
+            return View(DB.GetOneAd(id));
+        }
+        [HttpPost]
+        public ActionResult Update(AdvertisementsCreateModel adv)
+        {
+            if (adv.CreatorId != User.Identity.GetUserId())
+            {
+                return View("Error");
+            }
+            if (ModelState.IsValid)
+            {
+                DB.UpdateAd(adv);
+                List<AdvertisementsCreateModel> list = DB.GetCreatorsAds(adv.CreatorId).ToList();
+                return View("YourAds", list);
+            }
+            else
+            {
+                return View("Update", adv);
+            }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            return View(DB.GetOneAd(id));
+        }
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirm(int id)
+        {
+            AdvertisementsCreateModel adv = DB.GetOneAd(id);
+            if (adv.CreatorId != User.Identity.GetUserId())
+            {
+                return View("Error");
+            }
+            else
+            {
+                DB.DeleteAdv(adv);
+                List<AdvertisementsCreateModel> list = DB.GetCreatorsAds(adv.CreatorId).ToList();
+                return View("YourAds", list);
+            }
+        }
+        #region Errors
+        public ActionResult ErrorAccessDenied()
+        {
+            return View();
+        }
+        public ActionResult ErrorNoEntries()
+        {
+            return View();
+        }
+        public ActionResult ErrorNoCreated()
+        {
+            return View();
+        }
+        #endregion
     }
 }

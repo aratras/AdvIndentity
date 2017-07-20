@@ -1,15 +1,12 @@
-﻿@model IEnumerable<AdvIdentity.Models.AdvertisementsViewModel>
+﻿@model IEnumerable<AdvIdentity.Models.AdvertisementsCreateModel>
 
 @{
     ViewBag.Title = "ByCreator";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ByCreator</h2>
+<h2>Advertisements of user: @ViewBag.Name @ViewBag.Surname</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -26,12 +23,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AdvId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatorId)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Type)
         </td>

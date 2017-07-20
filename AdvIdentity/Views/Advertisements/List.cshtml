@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AdvIdentity.Models.AdvertisementsViewModel>
+﻿@model IEnumerable<AdvIdentity.Models.AdvertisementsCreateModel>
 
 @{
     ViewBag.Title = "List";
@@ -33,7 +33,7 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            <a type="button" class="btn btn-info" href="~/User/Details?ID=@item.CreatorId">Show Advertisement Creator</a>
+            <a type="button" class="btn btn-default" href="~/User/Details?ID=@item.CreatorId">Show Advertisement Creator</a>
         </td>
     </tr>
 }

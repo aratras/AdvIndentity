@@ -17,7 +17,7 @@ namespace AdvIdentity.Controllers
     {
         DBAccess DB = new DBAccess();
         // GET: User
-        public ActionResult Index()
+        public ActionResult List()
         {
             return View(DB.GetAllUsers().ToList());
         }

@@ -41,12 +41,14 @@
         <dd>
             @Html.DisplayFor(model => model.Phone)
         </dd>
+        <dd>
 
+        </dd>
     </dl>
 </div>
 <p>
     <div class=" btn-group">
-        <a type="button" class="btn btn-info" href="~/Advertisements/Index">Back to List</a>
-        <a type="button" class="btn btn-info" href="~/Advertisements/ByCreator/@Model.ID">Show other creator's advertisements</a>
+        <a type="button" class="btn btn-default" href="~/Advertisements/List">Back to List</a>
+        <a type="button" class="btn btn-default" href="~/Advertisements/ByCreator/@Model.ID">Show other creator's advertisements</a>
     </div>
 </p>

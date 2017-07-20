@@ -280,12 +280,17 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\List.cshtml" />
     <Content Include="Views\Advertisements\List.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\Advertisements\ByCreator.cshtml" />
     <Content Include="Views\Advertisements\Create.cshtml" />
     <Content Include="Views\Advertisements\YourAds.cshtml" />
+    <Content Include="Views\Advertisements\ErrorAccessDenied.cshtml" />
+    <Content Include="Views\Advertisements\Update.cshtml" />
+    <Content Include="Views\Advertisements\Delete.cshtml" />
+    <Content Include="Views\Advertisements\ErrorNoEntries.cshtml" />
+    <Content Include="Views\Advertisements\ErrorNoCreated.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -6,19 +6,6 @@ using System.Web;
 
 namespace AdvIdentity.Models
 {
-    public class AdvertisementsViewModel
-    {
-        public UInt32 AdvId
-        { get; set; }
-        public string CreatorId
-        { get; set; }
-        public string Type
-        { get; set; }
-        public string Description
-        { get; set; }
-        public int Price
-        { get; set; }
-    }
     public class AdvertisementsCreateModel
     {
         public UInt32 AdvId

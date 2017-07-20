@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<AdvIdentity.Models.UsersViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -38,7 +38,7 @@
             @Html.DisplayFor(modelItem => item.Phone)
         </td>
         <td>
-            <a type="button" class="btn btn-info" href="~/Advertisements/List/@item.ID">Person's advertisements</a>
+            <a type="button" class="btn btn-default" href="~/Advertisements/ByCreator?ID=@item.ID">Person's advertisements</a>
         </td>
     </tr>
 }
